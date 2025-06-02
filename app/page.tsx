@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import axios from "axios";
 async function getUserDetails(){
-  const response = await axios.get(`https://jsonplaceholder.typicode.com/users/1`);
+  const response = await axios.get(`http://localhost:3000/api/user`);
   if(response)
     return response.data;
   else return "Error fetching data!"

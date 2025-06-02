@@ -2,6 +2,8 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { SignupButton } from "./Button"
+import Link from "next/link"
 
 export function SignupForm({
   className,
@@ -32,9 +34,10 @@ export function SignupForm({
           </div>
           <Input id="password" type="password" required />
         </div>
-        <Button type="submit" className="w-full">
+        {/* <Button type="submit" className="w-full">
           Signup
-        </Button>
+        </Button> */}
+        <SignupButton/>
         <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
           <span className="bg-background text-muted-foreground relative z-10 px-2">
             Or continue with
@@ -52,9 +55,9 @@ export function SignupForm({
       </div>
       <div className="text-center text-sm">
         Already have an account?{" "}
-        <a href="/login" className="underline underline-offset-4">
+        <Link href="/login" className="underline underline-offset-4">
           Log in
-        </a>
+        </Link>
       </div>
     </form>
   )

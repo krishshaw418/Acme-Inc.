@@ -1,15 +1,39 @@
+"use client"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { LoginButton } from "./Button"
+// import { LoginButton } from "./Button"
+import Link from "next/link"
+import { toast } from "sonner"
+import axios from "axios"
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
+
+  async function HandleLogin(e:React.FormEvent<HTMLFormElement>){
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    try {
+      const response = await axios.post(`api/auth`,{
+        email: email,
+        password: password
+      });
+      toast.success(response?.data?.message);
+    } catch (error: any) {
+      const message = error.response?.data?.message || "Login failed! Please try again.";
+      toast.error(message);
+    }
+
+}
+
   return (
-    <form className={cn("flex flex-col gap-6", className)} {...props}>
+    <form className={cn("flex flex-col gap-6", className)} {...props} onSubmit={HandleLogin}>
       <div className="flex flex-col items-center gap-2 text-center">
         <h1 className="text-2xl font-bold">Login to your account</h1>
         <p className="text-muted-foreground text-sm text-balance">
@@ -19,7 +43,7 @@ export function LoginForm({
       <div className="grid gap-6">
         <div className="grid gap-3">
           <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="m@example.com" required />
+          <Input id="email" type="email" name="email" placeholder="m@example.com" required />
         </div>
         <div className="grid gap-3">
           <div className="flex items-center">
@@ -31,9 +55,11 @@ export function LoginForm({
               Forgot your password?
             </a>
           </div>
-          <Input id="password" type="password" required />
+          <Input id="password" type="password" name="password" required />
         </div>
-        <LoginButton/> {/* Client side component */}
+        <Button type="submit" className="w-full">
+          Login
+        </Button>
         <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
           <span className="bg-background text-muted-foreground relative z-10 px-2">
             Or continue with
@@ -51,9 +77,9 @@ export function LoginForm({
       </div>
       <div className="text-center text-sm">
         Don&apos;t have an account?{" "}
-        <a href="/signup" className="underline underline-offset-4">
+        <Link href="/signup" className="underline underline-offset-4">
           Sign up
-        </a>
+        </Link>
       </div>
     </form>
   )
