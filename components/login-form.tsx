@@ -20,7 +20,7 @@ export function LoginForm({
     const password = formData.get("password");
 
     try {
-      const response = await axios.post(`api/auth`,{
+      const response = await axios.post(`api/auth/login`,{
         email: email,
         password: password
       });

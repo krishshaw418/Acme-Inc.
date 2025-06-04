@@ -1,16 +1,38 @@
+"use client"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { SignupButton } from "./Button"
 import Link from "next/link"
+import axios from "axios"
+import React from "react"
+import { toast } from "sonner"
 
 export function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
+
+  async function HandleSignup(e: React.FormEvent<HTMLFormElement>){
+    e.preventDefault();
+    try {
+      const formData = new FormData(e.currentTarget);
+      const email = formData.get("email");
+      const password = formData.get("password");
+      const response = await axios.post(`api/auth/signup`,{
+        email: email,
+        password: password
+      });
+      toast.success(response?.data?.message);
+    } catch (error: any) {
+      const message = error.response?.data?.message || "Login failed! Please try again.";
+      toast.error(message);
+    }
+  }
+
   return (
-    <form className={cn("flex flex-col gap-6", className)} {...props}>
+    <form className={cn("flex flex-col gap-6", className)} {...props} onSubmit={HandleSignup}>
       <div className="flex flex-col items-center gap-2 text-center">
         <h1 className="text-2xl font-bold">Welcome!</h1>
         <p className="text-muted-foreground text-sm text-balance">
@@ -34,10 +56,10 @@ export function SignupForm({
           </div>
           <Input id="password" type="password" required />
         </div>
-        {/* <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full">
           Signup
-        </Button> */}
-        <SignupButton/>
+        </Button>
+        {/* <SignupButton/> */}
         <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
           <span className="bg-background text-muted-foreground relative z-10 px-2">
             Or continue with
