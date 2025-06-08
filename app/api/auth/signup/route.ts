@@ -1,9 +1,9 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
 
-export async function POST(req: Request){
+export async function POST(req: NextRequest){
     const {email, password} = await req.json();
     if (!email || !password) {
       return NextResponse.json(
@@ -11,6 +11,10 @@ export async function POST(req: Request){
       );
     }
     try {
+        const ExistingUser = await prisma.user.findUnique({
+          where: { email }
+        });
+        if(ExistingUser) return NextResponse.json({message: "User already exist. Please login."});
         const user = await prisma.user.create({
             data: {email, password},
             select: {id: true, email: true, password: true} 
@@ -20,10 +24,10 @@ export async function POST(req: Request){
         if(!token) return NextResponse.json({message: "Error generating token!"});
         (await cookies()).set("access-token", token, {
           httpOnly: true,
-          secure: process.env.NODE_ENV === "production",
+          secure: true,
           maxAge: 60*60,
           path: "/",
-          sameSite: "none"
+          sameSite: "lax"
         });
         return NextResponse.json({message: "Signup Successful!"});
     } catch (error) {

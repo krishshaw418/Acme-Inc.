@@ -1,11 +1,10 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import axios from "axios";
+import { prisma } from "@/lib/prisma";
 async function getUserDetails(){
-  const response = await axios.get(`http://localhost:3000/api/user`);
-  if(response)
-    return response.data;
-  else return "Error fetching data!"
+  const userDetail = await prisma.user.findFirst();
+  return userDetail;
 }
 export default async function Home() {
   const userData =await getUserDetails();
@@ -19,10 +18,10 @@ export default async function Home() {
           </div>
       </div>
       <div className="border flex flex-col justify-center w-60 h-35 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute">
-          <span className="flex justify-center">Id: {userData.id}</span>
+          {/* <span className="flex justify-center">Id: {userData.id}</span>
           <span className="flex justify-center">Name: {userData.name}</span>
-          <span className="flex justify-center">Username: {userData.username}</span>
-          <span className="flex justify-center">Email: {userData.email}</span>
+          <span className="flex justify-center">Username: {userData.username}</span> */}
+          <span className="flex justify-center">Email: {userData?.email}</span>
       </div>
     </div>
   );
