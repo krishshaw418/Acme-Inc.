@@ -1,4 +1,7 @@
+import { prisma } from "@/lib/prisma";
+import { NextResponse } from "next/server";
 export function GET(){
+    
     return Response.json({
         id:1,
         name: "Leanne Graham",

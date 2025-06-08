@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { SignupButton } from "./Button"
 import Link from "next/link"
 import axios from "axios"
 import React from "react"
@@ -26,7 +25,7 @@ export function SignupForm({
       });
       toast.success(response?.data?.message);
     } catch (error: any) {
-      const message = error.response?.data?.message || "Login failed! Please try again.";
+      const message = error.response?.data?.message || "Signup failed! Please try again.";
       toast.error(message);
     }
   }
