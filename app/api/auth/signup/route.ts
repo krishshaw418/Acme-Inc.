@@ -1,7 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 import jwt from "jsonwebtoken";
-import { cookies } from "next/headers";
 
 export async function POST(req: NextRequest){
     const {email, password} = await req.json();
@@ -19,17 +18,18 @@ export async function POST(req: NextRequest){
             data: {email, password},
             select: {id: true, email: true, password: true} 
         })
-        const token = jwt.sign({userId: user.id}, process.env.JWT_SECRET!, {expiresIn: '1h'});
+        const token = jwt.sign({id: user.id}, process.env.JWT_SECRET!, {expiresIn: '1h'});
         console.log("access-token: ", token);
         if(!token) return NextResponse.json({message: "Error generating token!"});
-        (await cookies()).set("access-token", token, {
+        const response = NextResponse.json({message: "Signup Successful!"});
+        response.cookies.set("access-token", token, {
           httpOnly: true,
           secure: true,
-          maxAge: 60*60,
-          path: "/",
-          sameSite: "lax"
+          sameSite: 'lax',
+          path: '/',
+          maxAge: 60 * 60
         });
-        return NextResponse.json({message: "Signup Successful!"});
+        return response;
     } catch (error) {
         console.log(error);
         return NextResponse.json({message: "Signup Failed!"});
