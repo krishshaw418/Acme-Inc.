@@ -20,8 +20,8 @@ async function getUserDetails(){
 export default async function Navbar(){
     const userData = await getUserDetails();
     return(
-        <div className="flex flex-col justify-center gap-56 w-full z-10 bg-[#528a32] fixed bg-opacity-20 backdrop-blur-xl">
-            <div className="border-b p-5 font-bold flex justify-between items-center relative">
+        <div className="flex flex-col justify-center gap-56 w-full z-10 bg-[#00492c] fixed bg-opacity-20 backdrop-blur-xl">
+            <div className="p-5 font-bold flex justify-between items-center relative">
             <div className="text-white flex flex-row justify-center items-center gap-2">
                 <GalleryVerticalEnd className="size-4" /> Acme Inc.
             </div>

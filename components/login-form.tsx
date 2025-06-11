@@ -51,7 +51,7 @@ export function LoginForm({
       <div className="grid gap-6">
         <div className="grid gap-3">
           <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" name="email" placeholder="m@example.com" required />
+          <Input id="email" type="email" name="email" placeholder="m@example.com" required autoComplete="email"/>
         </div>
         <div className="grid gap-3">
           <div className="flex items-center">
@@ -63,7 +63,7 @@ export function LoginForm({
               Forgot your password?
             </a>
           </div>
-          <Input id="password" type="password" name="password" required />
+          <Input id="password" type="password" name="password" required autoComplete="password"/>
         </div>
         <Button type="submit" className="w-full">
           Login
