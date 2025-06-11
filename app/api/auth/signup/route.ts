@@ -6,22 +6,23 @@ export async function POST(req: NextRequest){
     const {email, password} = await req.json();
     if (!email || !password) {
       return NextResponse.json(
-        { message: 'Email && Password required!' }
+        { message: 'Email && Password required!' },
+        {status: 400}
       );
     }
     try {
         const ExistingUser = await prisma.user.findUnique({
           where: { email }
         });
-        if(ExistingUser) return NextResponse.json({message: "User already exist. Please login."});
+        if(ExistingUser) return NextResponse.json({message: "User already exist. Please login."}, {status: 409});
         const user = await prisma.user.create({
             data: {email, password},
             select: {id: true, email: true, password: true} 
         })
         const token = jwt.sign({id: user.id}, process.env.JWT_SECRET!, {expiresIn: '1h'});
         console.log("access-token: ", token);
-        if(!token) return NextResponse.json({message: "Error generating token!"});
-        const response = NextResponse.json({message: "Signup Successful!"});
+        if(!token) return NextResponse.json({message: "Error generating token!"}, {status: 500});
+        const response = NextResponse.json({message: "Signup Successful!"}, {status: 200});
         response.cookies.set("access-token", token, {
           httpOnly: true,
           secure: true,

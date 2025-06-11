@@ -6,11 +6,14 @@ import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import { toast } from "sonner"
 import axios from "axios"
+import { useRouter } from "next/navigation"
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
+
+  const router = useRouter();
 
   async function HandleLogin(e:React.FormEvent<HTMLFormElement>){
     e.preventDefault();
@@ -23,7 +26,13 @@ export function LoginForm({
         email: email,
         password: password
       });
-      toast.success(response?.data?.message);
+      if(response?.status === 200){
+        toast.success(response?.data?.message);
+        setTimeout(() => {
+          router.push('/');
+        }, 300);
+      }
+      else toast.error(response?.data?.message);
     } catch (error: any) {
       const message = error.response?.data?.message || "Login failed! Please try again.";
       toast.error(message);

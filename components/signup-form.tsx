@@ -7,11 +7,14 @@ import Link from "next/link"
 import axios from "axios"
 import React from "react"
 import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 
 export function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
+
+  const router = useRouter();
 
   async function HandleSignup(e: React.FormEvent<HTMLFormElement>){
     e.preventDefault();
@@ -23,7 +26,13 @@ export function SignupForm({
         email: email,
         password: password
       });
-      toast.success(response?.data?.message);
+      if(response?.status === 200){
+        toast.success(response?.data?.message);
+        setTimeout(() => {
+          router.push('/');
+        }, 300);
+      }
+      else toast.error(response?.data?.message);
     } catch (error: any) {
       const message = error.response?.data?.message || "Signup failed! Please try again.";
       toast.error(message);
