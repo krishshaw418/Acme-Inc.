@@ -13,7 +13,7 @@ export default function HeroSection(){
           </span>
           <div className="pt-2"><Button>Contact Us</Button></div>
         </div>
-        <div className=""><Image src={heroImage} alt="hero-image" className="h-182" priority={true}></Image></div>
+        <div className=""><Image src={heroImage} alt="hero-image" className="h-182 w-190" priority={true}></Image></div>
         </div>
     )
 }
