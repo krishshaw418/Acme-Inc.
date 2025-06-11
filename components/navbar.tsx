@@ -25,7 +25,7 @@ export default async function Navbar(){
             <div className="text-white flex flex-row justify-center items-center gap-2">
                 <GalleryVerticalEnd className="size-4" /> Acme Inc.
             </div>
-            {userData? <div><LogoutButton/></div>: 
+            {userData? <div className="flex items-center justify-center gap-2"><h1 className="text-white font-medium">{userData.email}</h1><LogoutButton/></div>: 
             <div>
                 <Button variant="ghost" className="text-white"><Link href="/signup">Signup</Link></Button> 
                 <Button variant="ghost" className="text-white"><Link href="/login">Login</Link></Button>

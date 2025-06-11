@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 
 export default function HeroSection(){
     return (
-        <div className="flex flex-row justify-between items-center">
+        <div className="flex flex-row justify-between items-center bg-[#eceada]">
         <div className="text-[#00492c] text-6xl font-bold flex flex-col ml-5 pl-5">
           <h1 className="text-3xl text-black font-bold">FALCONWOOD REALTY</h1><br />
           <h1 className="text-xl font-semibold pt-2 pb-2">We're more than just a real estate firm.</h1>

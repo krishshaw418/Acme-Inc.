@@ -4,7 +4,7 @@ import TeamSection from "@/components/team";
 
 export default function Home() {
   return (
-    <div className="relative bg-[#eceada]">
+    <div className="relative">
       <Navbar/>
       <HeroSection/>
       <TeamSection/>
