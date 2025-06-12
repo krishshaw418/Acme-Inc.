@@ -32,7 +32,7 @@ export async function POST(req: NextRequest){
         });
         return response;
     } catch (error) {
-        console.log(error);
+        console.log("Error: ", error);
         return NextResponse.json({message: "Signup Failed!"});
     }
 }

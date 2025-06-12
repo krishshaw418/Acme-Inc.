@@ -23,6 +23,7 @@ export async function POST(req: NextRequest){
         })
         return response;
     } catch (error) {
+        console.log("Error", error);
         return NextResponse.json({message: "Server error please try again!"});
     }
 }
