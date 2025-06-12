@@ -23,7 +23,8 @@ export default async function Navbar(){
         <div className="flex flex-col justify-center gap-56 w-full z-10 bg-[#00492c] fixed bg-opacity-20 backdrop-blur-xl">
             <div className="p-4 font-bold flex justify-between items-center relative">
             <div className="text-white flex flex-row justify-center items-center gap-2">
-                <GalleryVerticalEnd className="size-4" /> Acme Inc.
+                <GalleryVerticalEnd className="size-4" />
+                <a href="#hero">Acme Inc.</a>
             </div>
             {userData? <div className="flex items-center justify-center gap-2"><h1 className="text-white font-medium">{userData.email}</h1><LogoutButton/></div>: 
             <div>
