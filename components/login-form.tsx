@@ -26,6 +26,8 @@ export function LoginForm({
       const response = await axios.post(`/api/auth/login`,{
         email: email,
         password: password
+      },{
+        withCredentials: true
       });
       if(response?.status === 200){
         toast.success(response?.data?.message);

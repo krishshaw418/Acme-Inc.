@@ -19,7 +19,7 @@ export async function POST(req: NextRequest){
             secure: true,
             maxAge: 60*60,
             path: "/",
-            sameSite: "lax"
+            sameSite: "strict"
         })
         return response;
     } catch (error) {
