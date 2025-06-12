@@ -2,6 +2,7 @@ import Navbar from "@/components/navbar";
 import HeroSection from "@/components/hero";
 import TeamSection from "@/components/team";
 import FeaturedList from "@/components/featuredlist";
+import WorkWithUsSection from "@/components/workwithus";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <HeroSection/>
       <TeamSection/>
       <FeaturedList/>
+      <WorkWithUsSection/>
     </div>
   );
 }
