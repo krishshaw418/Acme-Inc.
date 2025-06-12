@@ -11,14 +11,14 @@ export default function FeedBack(){
                 <div className="bg-[#c1d0bd] pt-25 px-5 pb-10">
                     <Quote className="text-white fill-white scale-y-[-1] scale-x-[-1] mb-3 size-15"/>
                     <p className="w-[320px] h-[150px]">
-                        Boost your product and service{`&#39`}s credibility by adding testimonials from your clients. People love recommendations so feedback from others who{`&#39`}ve tried it is invaluable.
+                        Boost your product and service&#39;s credibility by adding testimonials from your clients. People love recommendations so feedback from others who&#39;ve tried it is invaluable.
                     </p>
                     <h1 className="text-[#00492c] font-bold pt-3 text-xl">- Ariadne Synder</h1>
                 </div>
                 <div className="bg-[#c1d0bd] pt-25 px-5 pb-10 relative">
                     <Quote className="text-white fill-white scale-y-[-1] scale-x-[-1] mb-3 size-15"/>
                     <p className="w-[320px] h-[150px]">
-                        Boost your product and service{`&#39`}s credibility by adding testimonials from your clients. People love recommendations so feedback from others who{`&#39`}ve tried it is invaluable.
+                        Boost your product and service&#39;s credibility by adding testimonials from your clients. People love recommendations so feedback from others who&#39;ve tried it is invaluable.
                     </p>
                     <h1 className="text-[#00492c] font-bold pt-3 text-xl">- Casper Berkley</h1>
                 </div>
@@ -26,7 +26,7 @@ export default function FeedBack(){
                     <Quote className="text-white fill-white scale-y-[-1] scale-x-[-1]
                     mb-3 size-15"/>
                     <p className="w-[320px] h-[150px]">
-                        Boost your product and service{`&#39`}s credibility by adding testimonials from your clients. People love recommendations so feedback from others who{`&#39`}ve tried it is invaluable.
+                        Boost your product and service&#39;s credibility by adding testimonials from your clients. People love recommendations so feedback from others who&#39;ve tried it is invaluable.
                     </p>
                     <h1 className="text-[#00492c] font-bold pt-3 text-xl">- Samuel Clinton</h1>
                 </div>
