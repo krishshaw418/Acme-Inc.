@@ -3,6 +3,7 @@ import HeroSection from "@/components/hero";
 import TeamSection from "@/components/team";
 import FeaturedList from "@/components/featuredlist";
 import WorkWithUsSection from "@/components/workwithus";
+import FeedBack from "@/components/feedback";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <TeamSection/>
       <FeaturedList/>
       <WorkWithUsSection/>
+      <FeedBack/>
     </div>
   );
 }
