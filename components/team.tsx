@@ -77,7 +77,7 @@ export default function TeamSection() {
         {/* Left Arrow */}
         <button
           onClick={() => scroll("left")}
-          className="absolute z-10 left-0 top-1/2 -translate-y-1/2 text-white p-2 rounded-full"
+          className="absolute left-0 top-1/2 -translate-y-1/2 text-white p-2 rounded-full"
         >
           <ChevronLeft />
         </button>
@@ -108,7 +108,7 @@ export default function TeamSection() {
         {/* Right Arrow */}
         <button
           onClick={() => scroll("right")}
-          className="absolute z-10 right-0 top-1/2 -translate-y-1/2 text-white p-2 rounded-full"
+          className="absolute   right-0 top-1/2 -translate-y-1/2 text-white p-2 rounded-full"
         >
           <ChevronRight />
         </button>
