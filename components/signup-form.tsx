@@ -23,7 +23,7 @@ export function SignupForm({
       const formData = new FormData(e.currentTarget);
       const email = formData.get("email");
       const password = formData.get("password");
-      const response = await axios.post(`api/auth/signup`,{
+      const response = await axios.post(`/api/auth/signup`,{
         email: email,
         password: password
       });
