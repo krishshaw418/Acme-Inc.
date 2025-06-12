@@ -7,6 +7,7 @@ import Link from "next/link"
 import { toast } from "sonner"
 import axios from "axios"
 import { useRouter } from "next/navigation"
+import { AxiosError } from "axios"
 
 export function LoginForm({
   className,
@@ -33,11 +34,16 @@ export function LoginForm({
         }, 300);
       }
       else toast.error(response?.data?.message);
-    } catch (error: any) {
-      const message = error.response?.data?.message || "Login failed! Please try again.";
-      toast.error(message);
     }
-
+    // } catch (error: any) {
+    //   const message = error.response?.data?.message || "Login failed! Please try again.";
+    //   toast.error(message);
+    // }
+    catch (error: unknown) {
+  const err = error as AxiosError<{ message: string }>;
+  const message = err.response?.data?.message || "Login failed! Please try again.";
+  toast.error(message);
+}
 }
 
   return (

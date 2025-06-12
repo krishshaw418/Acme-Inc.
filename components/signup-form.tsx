@@ -8,6 +8,7 @@ import axios from "axios"
 import React from "react"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
+import { AxiosError } from "axios"
 
 export function SignupForm({
   className,
@@ -33,10 +34,16 @@ export function SignupForm({
         }, 300);
       }
       else toast.error(response?.data?.message);
-    } catch (error: any) {
-      const message = error.response?.data?.message || "Signup failed! Please try again.";
-      toast.error(message);
     }
+    // } catch (error: any) {
+    //   const message = error.response?.data?.message || "Signup failed! Please try again.";
+    //   toast.error(message);
+    // }
+    catch (error: unknown) {
+  const err = error as AxiosError<{ message: string }>;
+  const message = err.response?.data?.message || "Login failed! Please try again.";
+  toast.error(message);
+}
   }
 
   return (
