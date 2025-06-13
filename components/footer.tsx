@@ -1,6 +1,6 @@
 export default function Footer(){
     return(
-<div className="bg-[#00492c] text-white p-25">
+<div id="contact-us" className="bg-[#00492c] text-white p-25">
   {/* Original Large Screen Footer (unchanged) */}
   <div className="hidden lg:flex flex-row justify-between items-center">
     <div className="text-7xl font-bold">FALCONWOOD REALTY</div>
