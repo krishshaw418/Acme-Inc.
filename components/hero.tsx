@@ -19,7 +19,7 @@ export default function HeroSection(){
 <div className="lg:hidden flex flex-col bg-[#eceada] pt-20 pb-10 px-4 min-h-[80vh]">
   <div className="text-center">
     <h1 className="text-black text-2xl font-bold mb-2">FALCONWOOD REALTY</h1>
-    <p className="text-[#00492c] text-base mb-6">We're more than just a real estate firm.</p>
+    <p className="text-[#00492c] text-base mb-6">We&#39;re more than just a real estate firm.</p>
     <h2 className="text-[#00492c] text-3xl font-bold mb-6 leading-snug">
       We are here to<br/>help you find<br/>your dream home.
     </h2>

@@ -53,7 +53,7 @@ export default function FeedBack(){
   <div className="bg-[#c1d0bd] p-4 rounded-lg">
     <Quote className="text-white size-5 mb-2 mx-auto"/>
     <p className="text-[#00492c] text-sm text-center mb-4">
-      "Boost your product and service's credibility by adding testimonials from your clients."
+      &#34;Boost your product and service&#39;s credibility by adding testimonials from your clients.&#34;
     </p>
     <p className="text-[#00492c] font-bold text-center">- Ariadne Snyder</p>
     
