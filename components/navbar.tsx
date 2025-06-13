@@ -20,18 +20,52 @@ async function getUserDetails(){
 export default async function Navbar(){
     const userData = await getUserDetails();
     return(
-        <div className="flex flex-col justify-center gap-56 w-full z-10 bg-[#00492c] fixed bg-opacity-20 backdrop-blur-xl">
-            <div className="p-4 font-bold flex justify-between items-center relative">
-            <div className="text-white flex flex-row justify-center items-center gap-2">
-                <GalleryVerticalEnd className="size-4" />
-                <a href="#hero">Acme Inc.</a>
-            </div>
-            {userData? <div className="flex items-center justify-center gap-2"><h1 className="text-white font-medium">{userData.email}</h1><LogoutButton/></div>: 
-            <div>
-                <Button variant="ghost" className="text-white"><Link href="/signup">Signup</Link></Button> 
-                <Button variant="ghost" className="text-white"><Link href="/login">Login</Link></Button>
-            </div>}
-            </div>
-        </div>
+        <div>
+        <div className="hidden lg:flex flex-col justify-center gap-56 w-full z-10 bg-[#00492c] fixed bg-opacity-20 backdrop-blur-xl">
+  <div className="p-4 font-bold flex justify-between items-center relative">
+    <div className="text-white flex flex-row justify-center items-center gap-2">
+      <GalleryVerticalEnd className="size-4" />
+      <a href="#hero">Acme Inc.</a>
+    </div>
+    {userData ? (
+      <div className="flex items-center justify-center gap-2">
+        <h1 className="text-white font-medium">{userData.email}</h1>
+        <LogoutButton/>
+      </div>
+    ) : (
+      <div>
+        <Button variant="ghost" className="text-white"><Link href="/signup">Signup</Link></Button> 
+        <Button variant="ghost" className="text-white"><Link href="/login">Login</Link></Button>
+      </div>
+    )}
+  </div>
+</div>
+
+{/* Mobile/Tablet Navbar (only shows below lg) */}
+<div className="lg:hidden flex justify-between items-center w-full z-10 bg-[#00492c] fixed bg-opacity-20 backdrop-blur-xl p-3">
+  <div className="text-white flex items-center gap-2">
+    <GalleryVerticalEnd className="size-4" />
+    <a href="#hero" className="text-sm">Acme Inc.</a>
+  </div>
+  
+  {userData ? (
+    <div className="flex items-center gap-2">
+      <h1 className="text-white font-medium text-xs truncate max-w-[120px]">
+        {userData?.email}
+      </h1>
+      <LogoutButton />
+    </div>
+  ) : (
+    <div className="flex gap-1">
+      <Button variant="ghost" className="text-white p-1 text-xs">
+        <Link href="/signup">Signup</Link>
+      </Button>
+      <Button variant="ghost" className="text-white p-1 text-xs">
+        <Link href="/login">Login</Link>
+      </Button>
+    </div>
+  )}
+</div>
+</div>
     )
 }

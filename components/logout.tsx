@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function LogoutButton(){
     const router = useRouter();
     return (
-        <button className="hover: cursor-pointer m-2 h-5 w-5" onClick={async () => {
+        <button className="hover: cursor-pointer m-2 h-5 w-5 scale-90 md:scale-100" onClick={async () => {
             try {
                 const response = await axios.post(`/api/auth/logout`);
                 toast.success(response.data.message);
