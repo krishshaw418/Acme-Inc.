@@ -45,21 +45,26 @@ export default function FeedBack(){
   </div>
 
   {/* Mobile Layout (shows on sm screens) */}
-  <div className="md:hidden w-full max-w-sm">
-    <div className="bg-[#c1d0bd] pt-16 px-4 pb-6 mb-6">
-      <Quote className="text-white fill-white scale-y-[-1] scale-x-[-1] mb-3 size-10"/>
-      <p className="h-auto">
-        Boost your product and service&#39;s credibility by adding testimonials from your clients. 
-        People love recommendations so feedback from others who&#39;ve tried it is invaluable.
-      </p>
-      <h1 className="text-[#00492c] font-bold pt-3 text-base">- Ariadne Synder</h1>
-    </div>
-    <div className="flex justify-center gap-4">
+  <div className="lg:hidden bg-[#eceada] py-8 px-4">
+  <h2 className="text-[#00492c] text-2xl font-bold mb-6 text-center">
+    CLIENT TESTIMONIALS
+  </h2>
+  
+  <div className="bg-[#c1d0bd] p-4 rounded-lg">
+    <Quote className="text-white size-5 mb-2 mx-auto"/>
+    <p className="text-[#00492c] text-sm text-center mb-4">
+      "Boost your product and service's credibility by adding testimonials from your clients."
+    </p>
+    <p className="text-[#00492c] font-bold text-center">- Ariadne Snyder</p>
+    
+    {/* Dot indicators */}
+    <div className="flex justify-center gap-2 mt-4">
       {[1, 2, 3].map((dot) => (
-        <div key={dot} className="w-2 h-2 rounded-full bg-[#00492c] opacity-30"></div>
+        <div key={dot} className={`w-2 h-2 rounded-full ${dot === 1 ? 'bg-[#00492c]' : 'bg-[#00492c]/30'}`}></div>
       ))}
     </div>
   </div>
+</div>
 </div>
     )
 }

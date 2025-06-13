@@ -4,6 +4,7 @@ import tubImage from "../public/bathtub_24dp_00492C_FILL0_wght400_GRAD0_opsz24.p
 import bedImage from "../public/hotel_24dp_00492C_FILL0_wght400_GRAD0_opsz24.png";
 
 type PropertyDetails = {
+  id: number;
   name: string;
   type: string;
   bedrooms: number;
@@ -15,6 +16,7 @@ type PropertyDetails = {
 export default function FeaturedList() {
   const propertyList: PropertyDetails[] = [
     {
+      id: 1,
       name: "BELDEN",
       type: "TOWNHOUSE",
       bedrooms: 4,
@@ -23,6 +25,7 @@ export default function FeaturedList() {
       image: "https://i.pinimg.com/736x/1e/39/8b/1e398b6177790c4592e427644e89bce1.jpg",
     },
     {
+      id: 2,
       name: "BELDEN",
       type: "TOWNHOUSE",
       bedrooms: 4,
@@ -31,6 +34,7 @@ export default function FeaturedList() {
       image: "https://i.pinimg.com/736x/1e/39/8b/1e398b6177790c4592e427644e89bce1.jpg",
     },
     {
+      id: 3,
       name: "BELDEN",
       type: "TOWNHOUSE",
       bedrooms: 4,
@@ -77,37 +81,36 @@ export default function FeaturedList() {
   </div>
 
   {/* Mobile/Tablet responsive layout (only shows on screens < lg) */}
-  <div className="lg:hidden w-full max-w-md mx-auto">
-    {propertyList.map((property, index) => (
-      <div key={index} className="mb-10 last:mb-0">
-        <Image 
-          src={property.image} 
-          alt="property-image"
-          width={600}
-          height={400}
-          className="w-full h-auto object-cover rounded-t-lg"
+  <div className="lg:hidden bg-[#eceada] py-8 px-4">
+  <h2 className="text-[#00492c] text-2xl font-bold mb-6 text-center">
+    FEATURED LISTINGS
+  </h2>
+  
+  <div className="space-y-6">
+    {propertyList.map((property) => (
+      <div key={property.id} className="bg-white rounded-lg overflow-hidden shadow-sm">
+        <Image
+          src={property.image}
+          alt={property.name}
+          width={350}
+          height={200}
+          className="w-full h-40 object-cover"
         />
-        <div className="px-5 py-4 bg-white rounded-b-lg shadow-sm">
-          <h1 className="text-[#00492c] text-lg font-medium">{property.type}</h1>
-          <h1 className="text-[#00492c] font-bold text-2xl">{property.name}</h1>
-          <div className="flex flex-wrap gap-2 py-2">
-            <span className="bg-[#c1d0bd] px-2 py-1 text-[#00492c] flex flex-row gap-1 items-center text-sm">
-              <Image src={bedImage} alt="bed-image" className="size-4"/> 
+        <div className="p-3">
+          <h3 className="text-[#00492c] text-lg font-bold">{property.name}</h3>
+          <p className="text-[#00492c] text-sm mb-2">{property.type}</p>
+          <div className="flex flex-wrap gap-1">
+            <span className="bg-[#c1d0bd] px-2 py-1 text-[#00492c] text-xs flex items-center">
+              <Image src={bedImage} alt="Bed" width={12} height={12} className="mr-1"/> 
               {property.bedrooms} Beds
             </span>
-            <span className="bg-[#c1d0bd] px-2 py-1 text-[#00492c] flex flex-row gap-1 items-center text-sm">
-              <Image src={tubImage} alt="tub-image" className="size-4"/> 
-              {property.bathrooms} Baths
-            </span>
-            <span className="bg-[#c1d0bd] px-2 py-1 text-[#00492c] flex flex-row gap-1 items-center text-sm">
-              <Image src={carImage} alt="car-image" className="size-4"/> 
-              {property.parkings} Cars
-            </span>
+            {/* Repeat for other amenities */}
           </div>
         </div>
       </div>
     ))}
   </div>
+</div>
 </div>
   );
 }

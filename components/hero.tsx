@@ -16,23 +16,25 @@ export default function HeroSection(){
 </div>
 
 {/* Mobile/Tablet Hero (only shows below lg) */}
-<div id="hero-mobile" className="lg:hidden flex flex-col items-center bg-[#eceada] pt-20 pb-10 px-5 text-center">
-  <div className="text-[#00492c] text-4xl font-bold flex flex-col items-center">
-    <h1 className="text-2xl text-black font-bold">FALCONWOOD REALTY</h1>
-    <h1 className="text-lg font-semibold py-3">We&#39;re more than just a real estate firm.</h1>
-    <span className="text-3xl pb-5">
-      We are here to help you find your dream home.
-    </span>
-    <div className="pt-2"><a href="#contact-us"><Button>Contact Us</Button></a></div>
+<div className="lg:hidden flex flex-col bg-[#eceada] pt-20 pb-10 px-4 min-h-[80vh]">
+  <div className="text-center">
+    <h1 className="text-black text-2xl font-bold mb-2">FALCONWOOD REALTY</h1>
+    <p className="text-[#00492c] text-base mb-6">We're more than just a real estate firm.</p>
+    <h2 className="text-[#00492c] text-3xl font-bold mb-6 leading-snug">
+      We are here to<br/>help you find<br/>your dream home.
+    </h2>
+    <Button className="px-6 py-2 text-base">
+      Contact Us
+    </Button>
   </div>
-  <div className="mt-8">
-    <Image 
-      src={heroImage} 
-      alt="hero-image" 
-      className="h-auto w-full max-w-xs"
-      priority={true}
-    />
-  </div>
+  <Image 
+    src={heroImage} 
+    alt="Mobile hero" 
+    width={320}
+    height={240}
+    className="mt-8 w-full h-auto"
+    priority
+  />
 </div>
 </div>
     )

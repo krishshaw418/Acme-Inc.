@@ -66,6 +66,20 @@ export default async function Navbar(){
     </div>
   )}
 </div>
+<div className="lg:hidden flex justify-between items-center w-full z-50 bg-[#00492c] p-3 fixed top-0">
+  <div className="flex items-center gap-2">
+    <GalleryVerticalEnd className="size-4 text-white" />
+    <a href="#hero" className="text-white text-sm font-medium">FALCONWOOD</a>
+  </div>
+  
+  {/* Hamburger Menu */}
+  <button className="text-white p-1">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path d="M3 12h18M3 6h18M3 18h18" strokeWidth="2" strokeLinecap="round"/>
+    </svg>
+  </button>
 </div>
+</div>
+
     )
 }
