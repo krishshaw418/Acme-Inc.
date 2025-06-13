@@ -19,8 +19,8 @@ export default function FeedBack(){
       <div key={index} className="bg-[#c1d0bd] pt-25 px-5 pb-10">
         <Quote className="text-white fill-white scale-y-[-1] scale-x-[-1] mb-3 size-15"/>
         <p className="w-[320px] h-[150px]">
-          Boost your product and service's credibility by adding testimonials from your clients. 
-          People love recommendations so feedback from others who've tried it is invaluable.
+          Boost your product and service&#39;s credibility by adding testimonials from your clients. 
+          People love recommendations so feedback from others who&#39;ve tried it is invaluable.
         </p>
         <h1 className="text-[#00492c] font-bold pt-3 text-xl">- {client.name}</h1>
       </div>
@@ -36,8 +36,8 @@ export default function FeedBack(){
       <div key={index} className="bg-[#c1d0bd] pt-20 px-4 pb-8 flex-1">
         <Quote className="text-white fill-white scale-y-[-1] scale-x-[-1] mb-3 size-12"/>
         <p className="h-[120px]">
-          Boost your product and service's credibility by adding testimonials from your clients. 
-          People love recommendations so feedback from others who've tried it is invaluable.
+          Boost your product and service&#39;s credibility by adding testimonials from your clients. 
+          People love recommendations so feedback from others who&#39;ve tried it is invaluable.
         </p>
         <h1 className="text-[#00492c] font-bold pt-3 text-lg">- {client.name}</h1>
       </div>
@@ -49,8 +49,8 @@ export default function FeedBack(){
     <div className="bg-[#c1d0bd] pt-16 px-4 pb-6 mb-6">
       <Quote className="text-white fill-white scale-y-[-1] scale-x-[-1] mb-3 size-10"/>
       <p className="h-auto">
-        Boost your product and service's credibility by adding testimonials from your clients. 
-        People love recommendations so feedback from others who've tried it is invaluable.
+        Boost your product and service&#39;s credibility by adding testimonials from your clients. 
+        People love recommendations so feedback from others who&#39;ve tried it is invaluable.
       </p>
       <h1 className="text-[#00492c] font-bold pt-3 text-base">- Ariadne Synder</h1>
     </div>
