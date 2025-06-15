@@ -41,8 +41,8 @@ export default function FeaturedList() {
   ];
 
   return (
-    <div className="bg-[#eceada] flex flex-col items-center py-28 px-4">
-      <div className="text-[#00492c] text-5xl font-bold mb-8">
+    <div id="featuredlist" className="bg-[#eceada] flex flex-col items-center py-28 px-4">
+      <div className="text-[#00492c] text-5xl font-bold mb-10">
         FEATURED LISTINGS
       </div>
 

@@ -5,7 +5,7 @@ import { House } from 'lucide-react';
 
 export default function WorkWithUsSection(){
     return(
-        <div className="flex flex-col items-center bg-[#00492c] py-29 px-4">
+        <div id="experience" className="flex flex-col items-center bg-[#00492c] py-29 px-4">
             <div className="text-white text-5xl font-bold mb-10 p-4">
                 WHY WORK WITH US ?
             </div>

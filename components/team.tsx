@@ -70,8 +70,8 @@ export default function TeamSection() {
   };
 
   return (
-    <div className="bg-[#c1d0bd] flex flex-col items-center py-24 px-4 ">
-      <div className="text-[#00492c] text-5xl font-bold mb-8">MEET THE TEAM</div>
+    <div id="team" className="bg-[#c1d0bd] flex flex-col items-center py-24 px-4 ">
+      <div className="text-[#00492c] text-5xl font-bold mb-10">MEET THE TEAM</div>
 
       <div className="relative w-full max-w-7xl">
         {/* Left Arrow */}

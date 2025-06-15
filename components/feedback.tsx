@@ -2,7 +2,7 @@ import { Quote } from "lucide-react"
 
 export default function FeedBack(){
     return (
-        <div className="bg-[#eceada] flex flex-col items-center py-24 px-4">
+        <div id="feedback" className="bg-[#eceada] flex flex-col items-center py-24 px-4">
             <div className="text-[#00492c] text-5xl font-bold mb-10 flex flex-col items-center">
                 <h1>WHAT OUR CLIENT SAY</h1>
                 <h1>ABOUT US ?</h1>

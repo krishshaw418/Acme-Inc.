@@ -26,11 +26,33 @@ export default async function Navbar(){
                 <GalleryVerticalEnd className="size-4" />
                 <a href="#hero">Acme Inc.</a>
             </div>
-            {userData? <div className="flex items-center justify-center gap-2"><h1 className="text-white font-medium">{userData.email}</h1><LogoutButton/></div>: 
-            <div>
-                <Button variant="ghost" className="text-white"><Link href="/signup">Signup</Link></Button> 
-                <Button variant="ghost" className="text-white"><Link href="/login">Login</Link></Button>
-            </div>}
+            <div className="flex flex-row items-center gap-8 text-white font-medium">
+                <a href="#team" className="hover:underline hover:underline-offset-5">Our Team</a>
+                <a href="#featuredlist" className="hover:underline hover:underline-offset-5">Featured List</a>
+                <a href="#experience" className="hover:underline hover:underline-offset-5">Experience</a>
+                <a href="#feedback" className="hover:underline hover:underline-offset-5">Feedback</a>
+                <a href="#contact-us" className="hover:underline hover:underline-offset-5">Contact</a>
+            </div>
+            {userData ? (
+                <div className="flex items-center justify-center gap-2">
+                <h1
+                    className="text-white font-medium truncate max-w-[100px]"
+                    title={userData.email}
+                    >
+                        {userData.email}
+                </h1>
+                    <LogoutButton />
+                </div>
+            ) : (
+                <div>
+                    <Button variant="ghost" className="text-white">
+                        <Link href="/signup">Signup</Link>
+                    </Button>
+                    <Button variant="ghost" className="text-white">
+                        <Link href="/login">Login</Link>
+                    </Button>
+                </div>
+            )}
             </div>
         </div>
     )
