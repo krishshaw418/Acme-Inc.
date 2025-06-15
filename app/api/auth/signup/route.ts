@@ -1,6 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 import jwt from "jsonwebtoken";
+import { Hashing } from "@/app/lib/util";
 
 export async function POST(req: NextRequest){
     const {email, password} = await req.json();
@@ -10,14 +11,15 @@ export async function POST(req: NextRequest){
         {status: 400}
       );
     }
+    const hashedPassword = await Hashing(password); 
     try {
         const ExistingUser = await prisma.user.findUnique({
           where: { email }
         });
         if(ExistingUser) return NextResponse.json({message: "User already exist. Please login."}, {status: 409});
         const user = await prisma.user.create({
-            data: {email, password},
-            select: {id: true, email: true, password: true} 
+            data: {email, hashedPassword},
+            select: {id: true, email: true, hashedPassword: true} 
         })
         const token = jwt.sign({id: user.id}, process.env.JWT_SECRET!, {expiresIn: '1h'});
         console.log("access-token: ", token);
