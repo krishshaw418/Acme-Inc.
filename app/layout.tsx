@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Acme Inc.",
   description: "Residential Properties at Reasonable Price",
+  verification: {
+    google: '9O0vJULMwTC08hObJDQr3fh19KKknI9X0_n5ukIHO8I'
+  }
 };
 
 export default function RootLayout({
