@@ -8,7 +8,7 @@ import { GalleryVerticalEnd } from "lucide-react"
 import MobileMenu from "./mobile-menu";
 import { OurTeams, Experience, ContactUs, FeaturedList, FeedBack } from "./nav-links";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/lib/util";
 
 async function getUserDetails(){
   const session = await getServerSession(authOptions);  
