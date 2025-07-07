@@ -7,20 +7,29 @@ import LogoutButton from "./logout";
 import { GalleryVerticalEnd } from "lucide-react"
 import MobileMenu from "./mobile-menu";
 import { OurTeams, Experience, ContactUs, FeaturedList, FeedBack } from "./nav-links";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/app/lib/util";
 
 async function getUserDetails(){
-  const token = (await cookies()).get('access-token');
-  if(!token) return;
-  const payload = jwt.verify(token.value, process.env.JWT_SECRET!);
-  if (!payload || typeof payload !== 'object' || !payload.id) return;
-  const userDetail = await prisma.user.findUnique({
-    where: { id: payload.id }
-  });
-  return userDetail;
+  const session = await getServerSession(authOptions);  
+  if(!session) {
+    const token = (await cookies()).get('access-token');
+    if(!token) return;
+    const payload = jwt.verify(token.value, process.env.JWT_SECRET!);
+    if (!payload || typeof payload !== 'object' || !payload.id) return;
+    const userDetail = await prisma.user.findUnique({
+        where: { id: payload.id }
+    });
+    return userDetail;
+    }
+   else{
+    return session.user;
+   } 
 }
 
 export default async function Navbar(){
     const userData = await getUserDetails();
+    if(userData === null) return <></>;
     return(
         <div className="w-full bg-[#00492c] bg-opacity-20 backdrop-blur-xl">
             <div className="px-4 py-4 font-bold flex justify-between items-center relative">
@@ -45,7 +54,7 @@ export default async function Navbar(){
                         <div className="flex items-center justify-center gap-2">
                             <h1
                                 className="text-white font-medium truncate max-w-[100px] xl:max-w-[150px]"
-                                title={userData.email}
+                                title={userData.email!}
                             >
                                 {userData.email}
                             </h1>
@@ -89,7 +98,7 @@ export default async function Navbar(){
                                 <div className="text-white font-medium">
                                     <span className="text-sm text-gray-300">Logged in as:</span>
                                     <br />
-                                    <span className="truncate" title={userData.email}>
+                                    <span className="truncate" title={userData.email!}>
                                         {userData.email}
                                     </span>
                                 </div>
