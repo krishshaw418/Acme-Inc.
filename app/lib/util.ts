@@ -16,10 +16,12 @@ export async function VerifyingHash(hashedPassword: string, password: string): P
     return isCorrect;
 }
 
+// For generating password reset token
 export function generatePasswordResetToken(length = 64): string{
     return crypto.randomBytes(length).toString('hex');
 }
 
+// For setting up OAuth providers
 export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
   providers: [

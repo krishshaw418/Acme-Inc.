@@ -3,6 +3,7 @@ import { NextResponse, NextRequest } from "next/server";
 import redis from "@/lib/redis";
 import { prisma } from "@/lib/prisma";
 import { Hashing } from "@/app/lib/util";
+import { sendEmail } from "@/lib/mailer";
 
 export async function POST(req: NextRequest) {
     const { email } = await req.json();
@@ -15,8 +16,10 @@ export async function POST(req: NextRequest) {
         })
         if(!user) return NextResponse.json({error: "User not found!"});
         const resetToken = generatePasswordResetToken();
-        await redis.set(user.id, resetToken, {EX: 300});
-        return NextResponse.json({link: `${process.env.NEXTAUTH_URL}/api/auth/resetpassword/?user_Id=${user.id}&resetToken=${resetToken}`});
+        await redis.set(user.id, resetToken, {EX: 600});
+        const link = `${process.env.NEXTAUTH_URL}/api/auth/resetpassword/?user_Id=${user.id}&resetToken=${resetToken}`;
+        await sendEmail(email, link);
+        return NextResponse.json({message: "Mail sent!"});
     } catch (error) {
         console.log("Error: ", error);
         return NextResponse.json({error: "Server Error!"});
