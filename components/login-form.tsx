@@ -61,13 +61,13 @@ export function LoginForm({
         <div className="grid gap-3">
           <div className="flex items-center">
             <Label htmlFor="password">Password</Label>
-            <a
-              href="#"
+            <Link
+              href="/forgot-password"
               className="ml-auto text-sm underline-offset-4 hover:underline"
-              onClick={() => toast.info("This feature is not available yet!")}
+
             >
               Forgot your password?
-            </a>
+            </Link>
           </div>
           <Input id="password" type="password" name="password" required autoComplete="password"/>
         </div>
