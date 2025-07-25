@@ -5,6 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { Hashing } from "@/app/lib/util";
 import { sendEmail } from "@/lib/mailer";
 import crypto from 'crypto';
+import shortenLink from "@/lib/url_shortener";
 
 export async function POST(req: NextRequest) {
     const { email } = await req.json();
@@ -23,7 +24,10 @@ export async function POST(req: NextRequest) {
         await redis.set(`password_reset:${user.id}`, resetToken, {EX: 600});
         
         const link = `${process.env.NEXTAUTH_URL}/reset-password?user_Id=${user.id}&resetToken=${resetToken}`;
-        await sendEmail(email, link);
+
+        const short_url = await shortenLink(link);
+
+        await sendEmail(email, short_url!);
         
         return NextResponse.json({message: "Mail sent!"});
     } catch (error) {
