@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import redis from "@/lib/redis";
 
-export async function GET(req: NextRequest, {params}: {params: {shortId: string}} ) {
+export async function GET(req: NextRequest, {params}: {params: Promise<{shortId: string}>} ) {
+
     const { shortId } = await params;
 
     if (!shortId) {
