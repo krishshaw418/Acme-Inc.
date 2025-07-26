@@ -1,7 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
-import redis from "@/lib/redis";
+import getRedisClient from "@/lib/redis";
 
 export default async function shortenLink(long_url: string) {
+    const redis = getRedisClient();
     const uId = uuidv4();
 
     try {

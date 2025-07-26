@@ -1,6 +1,6 @@
 import { generatePasswordResetToken } from "@/app/lib/util";
 import { NextResponse, NextRequest } from "next/server";
-import redis from "@/lib/redis";
+import getRedisClient from "@/lib/redis";
 import { prisma } from "@/lib/prisma";
 import { Hashing } from "@/app/lib/util";
 import { sendEmail } from "@/lib/mailer";
@@ -8,6 +8,7 @@ import crypto from 'crypto';
 import shortenLink from "@/lib/url_shortener";
 
 export async function POST(req: NextRequest) {
+    const redis = getRedisClient();
     const { email } = await req.json();
     if(!email) return NextResponse.json({error: "Email required!"}, { status: 400 });
     
@@ -38,6 +39,7 @@ export async function POST(req: NextRequest) {
 
 // GET method for token validation
 export async function GET(req: NextRequest) {
+    const redis = getRedisClient();
     const url = new URL(req.url);
     const user_Id = url.searchParams.get('user_Id');
     const resetToken = url.searchParams.get('resetToken');
@@ -100,6 +102,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function PUT(req: NextRequest) {
+    const redis = getRedisClient();
     const url = new URL(req.url);
     const user_Id = url.searchParams.get('user_Id');
     const resetToken = url.searchParams.get('resetToken');
