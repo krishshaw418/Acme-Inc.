@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import redis from "@/lib/redis";
+import getRedisClient from "@/lib/redis";
 import { prisma } from "@/lib/prisma";
 import jwt from "jsonwebtoken";
 import { VerifyingHash } from "@/app/lib/util";
 
 export async function POST(req: NextRequest) {
+
+  const redis = getRedisClient();
+
   const { email, password } = await req.json();
 
   if (!email || !password) {
