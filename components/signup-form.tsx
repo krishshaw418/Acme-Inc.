@@ -9,6 +9,8 @@ import React from "react"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 import { AxiosError } from "axios"
+import { useState } from "react"
+import Toggle from "./toggle-eye"
 
 export function SignupForm({
   className,
@@ -16,6 +18,7 @@ export function SignupForm({
 }: React.ComponentProps<"form">) {
 
   const router = useRouter();
+  const [view, setView] = useState(false);
 
   async function HandleSignup(e: React.FormEvent<HTMLFormElement>){
     e.preventDefault();
@@ -57,11 +60,14 @@ export function SignupForm({
           <Label htmlFor="email">Email</Label>
           <Input id="email" name="email" type="email" placeholder="m@example.com" required autoComplete="email"/>
         </div>
-        <div className="grid gap-3">
+        <div className="grid gap-3 relative">
           <div className="flex items-center">
             <Label htmlFor="password">Password</Label>
           </div>
-          <Input id="password" name="password" type="password" required autoComplete="password"/>
+          <Input id="password" name="password" type={view? "text": "password"} required autoComplete="password"/>
+          <div className="absolute right-2 top-8">
+            <Toggle view = {view} setView = {setView}/>
+          </div>
         </div>
         <Button type="submit" className="w-full">
           Signup

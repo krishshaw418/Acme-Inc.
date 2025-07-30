@@ -9,6 +9,8 @@ import axios from "axios"
 import { useRouter } from "next/navigation"
 import { AxiosError } from "axios"
 import { signIn } from "next-auth/react"
+import { useState } from "react"
+import Toggle from "./toggle-eye"
 
 export function LoginForm({
   className,
@@ -16,6 +18,7 @@ export function LoginForm({
 }: React.ComponentProps<"form">) {
 
   const router = useRouter();
+  const [view, setView] = useState(false);
 
   async function HandleLogin(e:React.FormEvent<HTMLFormElement>){
     e.preventDefault();
@@ -58,7 +61,7 @@ export function LoginForm({
           <Label htmlFor="email">Email</Label>
           <Input id="email" type="email" name="email" placeholder="m@example.com" required autoComplete="email"/>
         </div>
-        <div className="grid gap-3">
+        <div className="grid gap-3 relative">
           <div className="flex items-center">
             <Label htmlFor="password">Password</Label>
             <Link
@@ -69,7 +72,10 @@ export function LoginForm({
               Forgot your password?
             </Link>
           </div>
-          <Input id="password" type="password" name="password" required autoComplete="password"/>
+            <Input id="password" type={view? "text": "password"} name="password" required autoComplete="password"/>
+            <div className="absolute right-2 top-9.5">
+              <Toggle view = {view} setView = {setView}/>
+            </div>
         </div>
         <Button type="submit" className="w-full">
           Login
