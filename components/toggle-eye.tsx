@@ -1,4 +1,4 @@
-import { Eye, EyeClosed } from "lucide-react"
+import { Eye, EyeOff } from "lucide-react"
 import React from "react";
 
 type View = {
@@ -8,6 +8,6 @@ type View = {
 
 export default function Toggle(props: View){
     
-    return props.view ? <Eye onClick={() => props.setView(false)} className="text-gray-400"/> : <EyeClosed onClick={() => props.setView(true)} className="text-gray-400"/>
+    return props.view ? <Eye onClick={() => props.setView(false)} className="text-gray-400 size-5"/> : <EyeOff onClick={() => props.setView(true)} className="text-gray-400 size-5"/>
     
 }

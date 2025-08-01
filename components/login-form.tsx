@@ -73,7 +73,7 @@ export function LoginForm({
             </Link>
           </div>
             <Input id="password" type={view? "text": "password"} name="password" required autoComplete="password"/>
-            <div className="absolute right-2 top-9.5">
+            <div className="absolute right-3 top-10">
               <Toggle view = {view} setView = {setView}/>
             </div>
         </div>
