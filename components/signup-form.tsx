@@ -65,7 +65,7 @@ export function SignupForm({
             <Label htmlFor="password">Password</Label>
           </div>
           <Input id="password" name="password" type={view? "text": "password"} required autoComplete="password"/>
-          <div className="absolute right-2 top-8">
+          <div className="absolute right-3 top-8.5">
             <Toggle view = {view} setView = {setView}/>
           </div>
         </div>
