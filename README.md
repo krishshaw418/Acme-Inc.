@@ -1,28 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏠 Real Estate Website – Learning Project
 
-## Getting Started
+A **full-stack real estate web app** built with modern technologies like **Next.js**, **TypeScript**, **Tailwind CSS**, **MongoDB**, and **Prisma**. This project was created **as a learning exercise** to explore full-stack development, user authentication, and responsive UI design using current tools and best practices.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-```
+## ✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 🔐 **User Authentication**: Signup, Login, and Logout functionality with secure credential handling.
+- 📦 **MongoDB + Prisma**: User data stored and managed using Prisma ORM with a MongoDB backend.
+- 🎨 **Responsive UI**: Styled with Tailwind CSS for a modern, mobile-friendly experience.
+- 🚀 **Deployed on Vercel**: Smooth CI/CD pipeline for hosting and version control.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔧 Tech Stack
 
-## Learn More
+- **Frontend**: [Next.js](https://nextjs.org/) + [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Backend & Database**:
+  - [MongoDB](https://www.mongodb.com/)
+  - [Prisma](https://www.prisma.io/)
+- **Deployment**: [Vercel](https://vercel.com/)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📸 Hero Section Preview
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deployed on Vercel
-
-This is the deployed version: [https://learning-next-js-ten-delta.vercel.app/](https://learning-next-js-ten-delta.vercel.app/)
+<!-- Replace the URL below with your image path -->
+![Hero Section](public/hero.png)
