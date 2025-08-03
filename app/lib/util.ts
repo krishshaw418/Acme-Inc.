@@ -2,6 +2,7 @@ import {genSaltSync, hashSync, compareSync} from "bcrypt-ts";
 import GithubProvider from "next-auth/providers/github"
 import type { NextAuthOptions } from "next-auth";
 import * as crypto from "crypto";
+import dns from "dns/promises";
 
 // For hashing password before storing into db
 export async function Hashing(password: string): Promise<string> {
@@ -34,4 +35,19 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/login",
   },
+}
+
+// For validating email address
+export async function validateEmail(email: string) {
+  const domain = email.split('@')[1];
+  try {
+    const mxRecords = await dns.resolveMx(domain);
+    if(!mxRecords[0].exchange) {
+      return false;
+    }
+    return true;
+  } catch (error) {
+    console.log("Error: ", error);
+    return false;
+  }
 }

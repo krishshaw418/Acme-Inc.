@@ -1,7 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 import jwt from "jsonwebtoken";
-import { Hashing } from "@/app/lib/util";
+import { Hashing, validateEmail } from "@/app/lib/util";
 
 export async function POST(req: NextRequest){
     const {email, password} = await req.json();
@@ -11,11 +11,19 @@ export async function POST(req: NextRequest){
         {status: 400}
       );
     }
-    const hashedPassword = await Hashing(password); 
     try {
+
+        const isValid = await validateEmail(email);
+        if(!isValid) {
+          return NextResponse.json({message: "Invalid email address!"}, {status: 400});
+        }
+
+        const hashedPassword = await Hashing(password);
+
         const ExistingUser = await prisma.user.findUnique({
           where: { email }
         });
+
         if(ExistingUser) return NextResponse.json({message: "User already exist. Please login."}, {status: 409});
         const user = await prisma.user.create({
             data: {email, hashedPassword},
@@ -35,6 +43,6 @@ export async function POST(req: NextRequest){
         return response;
     } catch (error) {
         console.log("Error: ", error);
-        return NextResponse.json({message: "Signup Failed!"});
+        return NextResponse.json({message: "Signup Failed!"}, {status: 500});
     }
 }
