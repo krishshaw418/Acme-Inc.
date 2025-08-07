@@ -19,10 +19,12 @@ export function SignupForm({
 
   const router = useRouter();
   const [view, setView] = useState(false);
+  const [submit, setSubmit] = useState(false);
 
   async function HandleSignup(e: React.FormEvent<HTMLFormElement>){
     e.preventDefault();
     try {
+      setSubmit(true);
       const formData = new FormData(e.currentTarget);
       const email = formData.get("email");
       const password = formData.get("password");
@@ -33,14 +35,17 @@ export function SignupForm({
         withCredentials: true
       });
       if(response?.status === 200){
+        setSubmit(false);
         toast.success(response?.data?.message);
         setTimeout(() => {
           router.push('/');
         }, 300);
       }
       else toast.error(response?.data?.message);
+      setSubmit(false);
     }
     catch (error: unknown) {
+  setSubmit(false);
   const err = error as AxiosError<{ message: string }>;
   const message = err.response?.data?.message || "Login failed! Please try again.";
   toast.error(message);
@@ -69,7 +74,7 @@ export function SignupForm({
             <Toggle view = {view} setView = {setView}/>
           </div>
         </div>
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full" disabled={submit? true: false}>
           Signup
         </Button>
         {/* <SignupButton/> */}

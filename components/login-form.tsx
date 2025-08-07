@@ -19,6 +19,7 @@ export function LoginForm({
 
   const router = useRouter();
   const [view, setView] = useState(false);
+  const [submit, setSubmit] = useState(false);
 
   async function HandleLogin(e:React.FormEvent<HTMLFormElement>){
     e.preventDefault();
@@ -27,6 +28,7 @@ export function LoginForm({
     const password = formData.get("password");
 
     try {
+      setSubmit(true);
       const response = await axios.post(`/api/auth/login`,{
         email: email,
         password: password
@@ -34,14 +36,17 @@ export function LoginForm({
         withCredentials: true
       });
       if(response?.status === 200){
+        setSubmit(false);
         toast.success(response?.data?.message);
         setTimeout(() => {
           router.push('/');
         }, 300);
       }
       else toast.error(response?.data?.message);
+      setSubmit(false);
     }
     catch (error: unknown) {
+  setSubmit(false);
   const err = error as AxiosError<{ message: string }>;
   const message = err.response?.data?.message || "Login failed! Please try again.";
   toast.error(message);
@@ -77,7 +82,7 @@ export function LoginForm({
               <Toggle view = {view} setView = {setView}/>
             </div>
         </div>
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full" disabled={submit? true: false}>
           Login
         </Button>
         <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
