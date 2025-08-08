@@ -41,6 +41,7 @@
     "@types/nodemailer": "^6.4.17",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "drizzle-orm": "^0.44.4",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
     "prisma": "^6.9.0",

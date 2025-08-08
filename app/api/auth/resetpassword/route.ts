@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     try {
         await rateLimiter.consume(ip, 2);
     } catch {
-        return NextResponse.json({message: "Too many requests!"}, {status: 429}); 
+        return NextResponse.json({message: "This request cannot be made so frequestly! Please try again after sometime."}, {status: 429}); 
     }
 
     const redis = getRedisClient();
