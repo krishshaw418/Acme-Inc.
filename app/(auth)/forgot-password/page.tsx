@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import React, { useState } from "react";
 import Link from "next/link";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { toast } from "sonner";
 
 export default function ForgotPassword() {
@@ -66,9 +66,9 @@ export default function ForgotPassword() {
                                 toast.error(response.data.message);
                                 setIsSubmit(false);
                             }
-                        } catch (error) {
+                        } catch (error: any) {
                             console.error('Error:', error);
-                            toast.error('An error occurred. Please try again.');
+                            toast.error(error.response.statusText);
                             setIsSubmit(false);
                         }
                     }}
