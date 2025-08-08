@@ -67,8 +67,13 @@ export default function ForgotPassword() {
                                 setIsSubmit(false);
                             }
                         } catch (error) {
-                            console.error('Error:', error);
-                            toast.error('An error occurred. Please try again.');
+                            if (axios.isAxiosError(error)) {
+                                toast.error(error.response?.data?.message || "Something went wrong");
+                                console.error("Axios error:", error);
+                            } else {
+                                toast.error("An unexpected error occurred");
+                                console.error("Unknown error:", error);
+                            }
                             setIsSubmit(false);
                         }
                     }}

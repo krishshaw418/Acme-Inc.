@@ -6,8 +6,20 @@ import { Hashing } from "@/app/lib/util";
 import { sendEmail } from "@/lib/mailer";
 import crypto from 'crypto';
 import shortenLink from "@/lib/url_shortener";
+import rateLimiter from "@/lib/limiter";
+import { headers } from "next/headers";
 
 export async function POST(req: NextRequest) {
+
+    const headersList = await headers();
+    const ip = headersList.get('x-forwarded-for')?.split(',')[0] || headersList.get('x-real-ip') || '127.0.0.1';
+    console.log("Ip: ", ip);
+    try {
+        await rateLimiter.consume(ip, 2);
+    } catch {
+        return NextResponse.json({message: "This request cannot be made so frequestly! Please try again after sometime."}, {status: 429}); 
+    }
+
     const redis = getRedisClient();
     const { email } = await req.json();
     if(!email) return NextResponse.json({error: "Email required!"}, { status: 400 });
