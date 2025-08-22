@@ -1,6 +1,7 @@
 import Image from "next/image";
 import heroImage from "../public/869d950569d47622991d2b5d677e26f9.jpg";
 import { Button } from "./ui/button";
+import ImgLoadState from "./ui/img-load";
 
 export default function HeroSection(){
     return (
@@ -31,7 +32,7 @@ export default function HeroSection(){
             </div>
 
             {/* Image Section */}
-            <div className="w-full lg:w-auto flex justify-center lg:justify-end order-1 lg:order-2 mb-8 lg:mb-0">
+            {/* <div className="w-full lg:w-auto flex justify-center lg:justify-end order-1 lg:order-2 mb-8 lg:mb-0">
                 <div className="flex justify-center w-full lg:w-auto">
                     <Image 
                         src={heroImage} 
@@ -41,7 +42,8 @@ export default function HeroSection(){
                         sizes="(max-width: 640px) 300px, (max-width: 768px) 400px, (max-width: 1024px) 500px, (max-width: 1280px) 600px, 700px"
                     />
                 </div>
-            </div>
+            </div> */}
+            <ImgLoadState/>
         </div>
     )
 }
