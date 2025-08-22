@@ -1,5 +1,5 @@
-import Image from "next/image";
-import heroImage from "../public/869d950569d47622991d2b5d677e26f9.jpg";
+// import Image from "next/image";
+// import heroImage from "../public/869d950569d47622991d2b5d677e26f9.jpg";
 import { Button } from "./ui/button";
 import ImgLoadState from "./ui/img-load";
 
